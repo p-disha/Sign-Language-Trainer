@@ -51,7 +51,3 @@ Using points from the largest contour we determine center of the palm by finding
 Using the positions of fingers and palm dimensions, we model our hand.
 
 Then we compare the model with a dictionary of Gestures defined in GestureAPI.py to determine presence of gestures.
-
-**Full explanation with screenshots is provided in /docs/Documentation.pdf**
-
-For any queries, contact: mahaveer.verma1@gmail.com
