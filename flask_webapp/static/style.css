@@ -26,7 +26,7 @@ body {
   
   .card-train {
     display:grid;
-    grid-template-columns: 900px;
+    grid-template-columns: 1200px;
     grid-template-rows: 210px 210px 80px;
     grid-template-areas: "image" "text" "stats";
     
@@ -80,6 +80,14 @@ body {
     grid-area: text;
     margin: 25px;
    
+  }
+
+  .card-progress {
+    grid-area: text;
+    margin-top: 120px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
   }
   
   .card-text .date {
@@ -139,5 +147,65 @@ body {
   
   .card:hover {
     transform: scale(1.2);
-    box-shadow: 1px 1px 15px rgba(0,0,0,0.4):
+    box-shadow: 1px 1px 15px rgba(0,0,0,0.4);
   }
+
+
+
+
+  .tunnel {
+    counter-reset: progress;
+    padding-left: 0;
+    display: flex;
+  }
+  
+  /* li is flex-item and flex-container */
+  .tunnel li {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    counter-increment: progress
+  }
+  
+  /* everyone flexible except first */
+  .tunnel li+li {
+    flex: 1 0 auto;
+  }
+  
+  /* hide further steps */
+  .tunnel .is-current ~ li {
+    opacity: .3;
+  }
+  
+  /* show counter numbers */
+  .tunnel li::after {
+    content: counter(progress);
+    display: inline-block;
+    box-sizing: border-box;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    background: #da614e;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;		
+  }
+  
+  /* show progress bars except for first */
+  .tunnel li+li::before {
+    content: "";
+    flex: 1;
+    display: block; /* IE10 fix */
+    border-bottom: 2px solid #da614e;
+  }
+  .tunnel .is-current ~ li::before {
+    border-bottom-style: dotted;
+  }
+
+
+.discrete {
+  margin-top: 3em;
+  font-size: 1.2rem;
+  color: #678;
+  line-height: 1.5;
+}
