@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Sign Language Training
+        </title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <Body>
+        <div class="card-train">
+            <div class="card-input"></div>
+            <div class="card-video">
+                <video class="videobox canvasbox" autoplay="autoplay" id="myvideo" style="display: none;"></video>
+                <canvas id="canvas" class="border canvasbox"></canvas>
+            </div>
+            <div class="card-text">
+              <span class="date">your answer is: </span>
+              <h2>Correct!</h2>
+            </div>
+            <div class="card-stats">
+              <div class="stat">
+                <div class="type">
+                  <a>Train</a>
+                </div>
+              </div>
+              <div class="stat border">
+                <div class="type">
+                  <a>Home</a>
+                </div>
+              </div>
+              <div class="stat">
+                <div class="type">
+                  <a>Test</a>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+          <!-- Place your code in the script tag below. You can also use an external .js file -->
+        <script>
+            const video = document.getElementById("myvideo");
+            const canvas = document.getElementById("canvas");
+            const context = canvas.getContext('2d');
+            
+            const modelParams = {
+                flipHorizontal: true,   // flip e.g for video  
+                maxNumBoxes: 20,        // maximum number of boxes to detect
+                iouThreshold: 0.5,      // ioU threshold for non-max suppression
+                scoreThreshold: 0.6,    // confidence threshold for predictions.
+            }
+            
+            handTrack.load(modelParams).then(lmodel => {
+                // detect objects in the image.
+                model = lmodel
+            });
+
+            handTrack.startVideo(video).then(function (status) {
+              console.log("video started", status);
+              if (status) {
+                runDetection();
+              }
+              else {
+                console.log("video not started");
+              }
+            });
+            
+            function runDetection() {
+                model.detect(video).then(predictions => {
+                    console.log("Predictions: ", predictions);
+                    model.renderPredictions(predictions, canvas, context, video);
+                    requestAnimationFrame(runDetection);
+                });
+            }
+
+
+        </script>
+    </Body>
+</html>

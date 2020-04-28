@@ -24,6 +24,21 @@ body {
     cursor: pointer;
   }
   
+  .card-train {
+    display:grid;
+    grid-template-columns: 900px;
+    grid-template-rows: 210px 210px 80px;
+    grid-template-areas: "image" "text" "stats";
+    
+    font-family: roboto;
+    border-radius: 18px;
+    background-color: #fff;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    text-align: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+
   .card-image {
     grid-area: image;
     background-image: url('https://clipartart.com/images/hand-peace-sign-clipart-with-no-background.jpg');
@@ -31,6 +46,34 @@ body {
     border-top-right-radius: 13px;
     background-size: cover;
      margin: 1px 10px;
+  }
+
+  .card-input {
+    grid-area: image;
+    background-image: url('https://clipartart.com/images/hand-peace-sign-clipart-with-no-background.jpg');
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    margin-left: 10%;
+    width: 30%;
+  }
+  
+  .canvasbox {
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-right: 5px;
+    width: 70%;
+    height: 100%;
+    border-bottom: 3px solid #0063FF;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 #00000030;
+  background: #333;
+
+}
+
+  .card-video {
+    grid-area: image;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    margin-left: 60%;
   }
   
   .card-text {
