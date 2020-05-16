@@ -98,11 +98,31 @@
                 console.log("video not started");
               }
             });
-            
+            makeRequest = true;
             function runDetection() {
                 model.detect(video).then(predictions => {
-                    console.log("Predictions: ", predictions);
+                    if(predictions.length==1){
+                      let screenshot_context = canvas.getContext('2d');
+                      // draw the video contents into the canvas x, y, width, height
+                      screenshot_context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                      console.log("Try");
+                      if(makeRequest){
 
+                        let ctx = canvas.getContext('2d');
+                        ctx.drawImage(video, predictions[0]['bbox'][0], predictions[0]['bbox'][1], predictions[0]['bbox'][2] + 15 , predictions[0]['bbox'][3] + 15, 0, 0, canvas.width, canvas.height)
+                        const dataURL = canvas.toDataURL('image/png');
+                        console.log("Reuqets Made");
+                        console.log(dataURL);
+                        //ajax code for rest api
+
+                        //*********************
+                        this.makeRequest = false;
+                        setTimeout(() => {
+                          this.makeRequest = true;
+                        }, 4000);
+
+                    }
+                  }
                     model.renderPredictions(predictions, canvas, context, video);
 
                     requestAnimationFrame(runDetection);
