@@ -45,16 +45,18 @@ body {
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
     background-size: cover;
-     margin: 1px 10px;
+    margin: 1px 10px;
   }
 
   .card-input {
     grid-area: image;
-    background-image: url('https://clipartart.com/images/hand-peace-sign-clipart-with-no-background.jpg');
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
-    margin-left: 10%;
+    margin-left: 2px;
     width: 30%;
+  }
+  .input-text {
+    font-size: 6em;
   }
   
   .canvasbox {
@@ -65,7 +67,7 @@ body {
     height: 100%;
     border-bottom: 3px solid #0063FF;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 #00000030;
-  background: #333;
+    background: #333;
 
 }
 
