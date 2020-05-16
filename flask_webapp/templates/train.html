@@ -10,7 +10,7 @@
 
     <Body>
         <div class="card-train">
-            <div class="card-input"><h1 class="input-text"><strong>A</strong></h1></div>
+            <div class="card-input"><h1 id="input-text" class="input-text">A</h1></div>
             <div class="card-video">
                 <video class="videobox canvasbox" autoplay="autoplay" id="myvideo" style="display: none;"></video>
                 <canvas id="canvas" class="border canvasbox"></canvas>
@@ -21,9 +21,9 @@
             </div>
             <div class="card-progress">
               <ol class="tunnel">
+                <li id="is-current" class="is-current"></li>
                 <li></li>
                 <li></li>
-                <li class="is-current"></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -119,9 +119,29 @@
                         
                         if(match){
                           this.makeRequest = false;
-                          document.getElementById('answer').textContent = 'Correct!';
-                          // change the image and answer and the progress bar and set makerequest True after 2 sec.
+                          let answer = document.getElementById('answer')
+                          answer.textContent = 'Correct!';
 
+                          setTimeout(() => {
+                            // change the image
+                            
+                            let inp = document.getElementById('input-text');
+                            let current_value = inp.innerHTML;
+                            let new_value = String.fromCharCode(current_value.charCodeAt(0)+1);
+                            inp.textContent = new_value;
+                            answer.textContent  = "";
+                            // update the progress bar
+                            var c_active = document.getElementById('is-current');
+                            c_active.className="is-not-current";
+                            c_active.removeAttribute('id');
+                            var n_active = c_active.nextElementSibling;
+                            n_active.className="is-current";
+                            n_active.setAttribute("id", "is-current");
+
+                            this.makeRequest = true;
+                          }, 2000);
+
+                          
                         }
                         else {
                           this.makeRequest = false;
