@@ -63,7 +63,7 @@
               </div>
               <div class="stat">
                 <div class="type">
-                  <a href="{{ url_for('test_view') }}">Test</a>
+                  <a href="https://www.disabled-world.com/disability/types/hearing/communication/american-sign-language.php">Info</a>
                 </div>
               </div>
             </div>
@@ -78,8 +78,8 @@
             const context = canvas.getContext('2d');
             
             const modelParams = {
-                flipHorizontal: true,   // flip e.g for video  
-                maxNumBoxes: 20,        // maximum number of boxes to detect
+                flipHorizontal: false,   // flip e.g for video  
+                maxNumBoxes: 1,        // maximum number of boxes to detect
                 iouThreshold: 0.5,      // ioU threshold for non-max suppression
                 scoreThreshold: 0.6,    // confidence threshold for predictions.
             }
@@ -108,14 +108,17 @@
                       if(makeRequest){
 
                         let ctx = canvas.getContext('2d');
-                        ctx.drawImage(video, predictions[0]['bbox'][0], predictions[0]['bbox'][1], predictions[0]['bbox'][2] + 15 , predictions[0]['bbox'][3] + 15, 0, 0, canvas.width, canvas.height)
+                        ctx.drawImage(video, predictions[0]['bbox'][0], predictions[0]['bbox'][1], predictions[0]['bbox'][2], predictions[0]['bbox'][3], 0, 0, canvas.width, canvas.height)
                         const dataURL = canvas.toDataURL('image/png');
                         console.log("Reuqest Made");
-                        console.log(dataURL);
+                        console.log(dataURL)
+                        //const w = window.open('about:blank', 'image from canvas');
+                        //w.document.write("<img src='" + dataURL + "' alt='from canvas'/>");
+                        //console.log('Saved!');
                         //ajax code for rest api
                         
                         //*********************
-                        match = true;
+                        match = false;
                         
                         if(match){
                           this.makeRequest = false;

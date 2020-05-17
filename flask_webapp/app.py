@@ -13,9 +13,6 @@ def index_view():
 def train_view():
     return render_template('train.html')
 
-@app.route('/test')
-def test_view():
-    return render_template('test.html')
     
 if __name__ == '__main__':
     app.run(debug=True, port=5201)
