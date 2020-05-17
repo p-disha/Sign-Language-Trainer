@@ -1,5 +1,8 @@
 # HAND GESTURE RECOGNITION
-Project Report:
+
+![Home](https://github.com/p-disha/Sign-Language-Trainer/blob/master/screenshots/home.png)
+
+### Project Report:
 https://drive.google.com/open?id=1jYAYSWjX-JIwSAeN7yBEIxS7x9Yzp1E8khib4W0FKqo
 
 ### INTRODUCTION
