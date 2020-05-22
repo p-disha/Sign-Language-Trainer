@@ -1,4 +1,10 @@
 
+# **********************************************
+# * Hand Gesture Recognition Implementation v1.0
+# * 2 July 2016
+# * Mahaveer Verma
+# **********************************************
+
 import cv2
 import numpy as np
 import math
